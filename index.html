@@ -8,7 +8,12 @@
 		<div class="bit output">
 			<pre class="display" data-bind="text:program"></pre>
 		</div>
-		<div class="bit punchcards" data-bind="foreach: punchcards">
+		<div class="bit punchcards">
+			<div class="options">
+				<label>Hardcore mode: <input type="checkbox" data-bind="checked: hardcore"></label>
+			</div>
+
+			<!-- ko foreach: punchcards -->
 			<table class="punchcard">
 				<tbody data-bind="foreach: rows"><tr>
 					<!-- ko foreach: holes -->
@@ -25,6 +30,7 @@
 					</tr>
 				</tfoot>
 			</table>
+			<!-- /ko -->
 		</div>
 		<div class="bit help">
 			<table id="codes">
