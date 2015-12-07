@@ -1,6 +1,6 @@
-html {
+html, button {
   font-size: 16px;
-  font-family: monospace;
+  font-family: 'Didact Gothic';
 }
 
 body * {
@@ -45,7 +45,7 @@ body * {
   border-radius: 10px;
   padding: 2rem;
   background: #eaebea;
-  font-family: sans-serif;
+  font-family: 'Didact Gothic';
   font-size: 2rem;
   margin-bottom: 2rem;
   color: #555;
