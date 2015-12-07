@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel="stylesheet" href="css.css"/>
+	</head>
+	<body>
+		<div class="bit output">
+			<pre class="display" data-bind="text:program"></pre>
+		</div>
+		<div class="bit punchcards" data-bind="foreach: punchcards">
+			<table class="punchcard">
+				<tbody data-bind="foreach: rows"><tr>
+					<!-- ko foreach: holes -->
+					<td><div class="hole" data-bind="click: toggle, css: {punched: punched}, text :$index"></div></td>
+					<!-- /ko -->
+					<td class="letter" data-bind="text: letter"></td>
+				</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="bit help">
+			<table id="codes">
+			</table>
+		</div>
+
+		<script src="ko.js"></script>
+		<script src="js.js"></script>
+	</body>
+</html>

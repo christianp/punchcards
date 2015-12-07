@@ -1,0 +1,84 @@
+html {
+  font-size: 16px;
+}
+
+body * {
+  box-sizing: border-box;
+}
+
+.punchcards {
+  position: relative;
+  height: 50rem;
+  width: 35rem;
+  overflow-y: scroll;
+  display: inline-block;
+  padding: 0 1rem;
+}
+
+.punchcard .hole {
+  width: 1.8rem;
+  height: 2.4rem;
+  vertical-align: middle;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+.punchcard .hole.punched {
+  background: white;
+  color: white;
+}
+
+.punchcard td {
+  width: 1.8rem;
+  height: 2.4rem;
+  text-align: center;
+  line-height: 2.4rem;
+}
+
+.punchcard {
+  border: 3px solid;
+  border-radius: 10px;
+  padding: 2rem;
+  background: #D9DBD8;
+  font-family: monospace;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+}
+
+@keyframes slideup {
+  from {
+    top: 0;
+  }
+  to {
+    top: -100%;
+  }
+}
+
+.bit {
+  float: left;
+  width: 30%;
+  margin-right: 1rem;
+}
+.display {
+  font-size: 2rem;
+}
+
+.bit.punchcards {
+	width: 32rem;
+}
+.bit.help {
+	width: 16rem;
+}
+#codes {
+	width: 100%;
+	font-family: monospace;
+	border-collapse: collapse;
+}
+#codes .number {
+	text-align: right;
+	padding-right: 1em;
+	border-left: 1px solid;
+	padding-bottom: 0.2em;
+}
+#codes .character {
+	padding-right: 0.5em;
+}
