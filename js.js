@@ -8,6 +8,9 @@ function Punchcard(num_rows,num_holes) {
 	this.value = ko.computed(function() {
 		return this.rows().map(function(r){return r.letter()}).join('');
 	},this);
+	this.empty = ko.computed(function() {
+		return this.value().trim()=='';
+	},this);
 }
 Punchcard.prototype = {
 	clear: function() {
@@ -45,7 +48,7 @@ Row.prototype = {
 	set_value: function(n) {
 		for(var i=0;i<this.num_holes;i++) {
 			var p = Math.pow(2,i);
-			this.holes()[i].punched(p & n);
+			this.holes()[i].punched((p & n) && true || false);
 		}
 	},
 	clear: function() {
@@ -58,20 +61,27 @@ function Hole() {
 	var h = this;
 	this.punched = ko.observable(false);
 	this.toggle = function() {
+		if(program.hardcore() && h.punched()) {
+			return;
+		}
 		h.punched(!h.punched());
 	}
 }
 
 
 function Program() {
+	this.hardcore = ko.observable(false);
 	this.punchcards = ko.observableArray([]);
 	ko.computed(function() {
 		var punchcards = this.punchcards();
-		if(punchcards.length==0 || punchcards[punchcards.length-1].value().trim()!='') {
+		if(punchcards.length==0 || !punchcards[punchcards.length-1].empty()) {
 			var pc =this.add_card();
 			pc.value();
 			return;
 		} 
+		if(punchcards.length>=2 && punchcards[punchcards.length-1].empty() && punchcards[punchcards.length-2].empty()) {
+			this.punchcards.remove(punchcards[punchcards.length-1]);
+		}
 	},this);
 	this.program = ko.computed(function() {
 		return this.punchcards().map(function(pc) {
@@ -114,7 +124,7 @@ Program.prototype = {
 }
 
 var program = new Program();
-program.set_program('hello world');
+program.set_program('hello world!');
 ko.applyBindings(program);
 
 var codes_table = document.getElementById('codes');

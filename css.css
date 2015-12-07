@@ -44,6 +44,14 @@ body * {
   margin-bottom: 2rem;
 }
 
+.punchcard .bin {
+    border: none;
+    background: #eee;
+    height: 100%;
+    width: 100%;
+    padding: 0;
+}
+
 @keyframes slideup {
   from {
     top: 0;
@@ -59,7 +67,12 @@ body * {
   margin-right: 1rem;
 }
 .display {
-  font-size: 2rem;
+  font-size: 1.5rem;
+  font-family: 'dot_matrixregular';
+  background: repeating-linear-gradient(0deg,hsla(240,50%,96%,1), hsla(240,50%,97%,1) 50%,white 50%, white);
+  background-size: 100% 1.5rem;
+  line-height: 1.5rem;
+  padding: 0 1em;
 }
 
 .bit.punchcards {

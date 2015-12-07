@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="css.css"/>
+		<link rel="stylesheet" href="fonts/dot_matrix/stylesheet.css"/>
 	</head>
 	<body>
 		<div class="bit output">
@@ -11,11 +12,18 @@
 			<table class="punchcard">
 				<tbody data-bind="foreach: rows"><tr>
 					<!-- ko foreach: holes -->
-					<td><div class="hole" data-bind="click: toggle, css: {punched: punched}, text :$index"></div></td>
+					<td><div class="hole" data-bind="click: toggle, css: {punched: punched}, text: !punched() ? $index() : ''"></div></td>
 					<!-- /ko -->
-					<td class="letter" data-bind="text: letter"></td>
+					<td class="letter" data-bind="text: letter, visible: !$root.hardcore()"></td>
 				</tr>
 				</tbody>
+				<tfoot>
+					<tr>
+						<td colspan="10">
+							<button class="bin" data-bind="click:clear">Bin</button>
+						</td>
+					</tr>
+				</tfoot>
 			</table>
 		</div>
 		<div class="bit help">
