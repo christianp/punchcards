@@ -29,9 +29,27 @@ body * {
   border: 1px solid #ccc;
   cursor: pointer;
 }
+
+.hardcore .punchcard {
+	background: #b99a7b;
+}
+
+.hardcore .punchcard .hole {
+	height: 1.8rem;
+	border-radius: 50%;
+	border: none;
+	color: rgba(0,0,0,0);
+}
+.hardcore .punchcard .hole:not(.punched):hover {
+	border: 1px solid hsl(30, 31%, 54%);
+}
+
 .punchcard .hole.punched {
   background: white;
-  color: white;
+}
+
+.hardcore .punchcard .hole.punched {
+	background: black;
 }
 
 .punchcard td {
